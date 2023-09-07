@@ -1,3 +1,4 @@
 openai
 pyPDF2
 pyperclip
+llama_index
