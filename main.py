@@ -1,3 +1,4 @@
+import os
 import PyPDF2
 import openai
 import tkinter as tk
@@ -6,8 +7,14 @@ import threading
 import time
 import pyperclip
 from tkinter.ttk import Progressbar
+import dotenv
+from dotenv import load_dotenv
 
-openai.api_key = "YOUR_API_KEY"
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
+openai.api_key = api_key
+#openai.api_key_path = os.environ.get("OPENAI_API_KEY")
 
 
 def extract_text(filepath, progress_var):
