@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
-from llama_index import GPTSimpleVectorIndex, SimpleDirectoryReader
+from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader
 import os
+import PyPDF2
+
 
 os.environ['OPENAI_API_KEY'] = 'sk-'# Your API key
 
@@ -9,7 +11,7 @@ class MyApp(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.master.configure(bg='#f0f0f0')
+        self.master.configure(bg='#000000')
         self.pack(fill='both', expand=True)
         self.create_widgets()
         
@@ -48,10 +50,10 @@ class MyApp(tk.Frame):
             self.results_text.insert(tk.END, "Please select a directory first.")
             return
         
-        index = GPTSimpleVectorIndex(documents)
+        index = GPTVectorStoreIndex(documents)
         index.save_to_disk('index.json')
        
-        index = GPTSimpleVectorIndex.load_from_disk('index.json')
+        index = GPTVectorStoreIndex.load_from_disk('index.json')
         
         query = self.query_entry.get()
         response = index.query(query)

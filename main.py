@@ -101,7 +101,9 @@ def summarize():
 
 
 root = tk.Tk()
-root.title('Chatgpt PDF Summarizer ')
+root.title('SCO 306 PDF Summarizer')
+root.geometry('800x800')
+root.configure(bg='#00FF00')
 
 # File path label and entry field
 file_path_label = tk.Label(root, text='File path:')
